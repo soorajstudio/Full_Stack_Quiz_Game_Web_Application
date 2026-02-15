@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import "./App.css";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io(); // Uses relative path, works with Vite proxy and Cloudflare
 
 function App() {
   const [role, setRole] = useState(null); // 'HOST' or 'PLAYER'
