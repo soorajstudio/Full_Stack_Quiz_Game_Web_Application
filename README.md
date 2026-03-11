@@ -1,8 +1,7 @@
-# GameQuiz Project Setup Guide
+# 🎮 Full Stack Quiz Web Application
 
-This guide explains how to run the GameQuiz frontend and backend locally, and how to expose the frontend using Cloudflare Tunnel for external access. It also covers the necessary Vite configuration for secure connections.
+Developed a full stack web-based quiz application that allows users to participate in interactive quizzes featuring multiple-choice questions and typed answer responses. Implemented dynamic question rendering, answer validation logic, and score calculation mechanisms to support real-time quiz interaction. Designed a responsive user interface for smooth navigation between quiz sections and integrated backend functionality to manage quiz data and user responses. This project enhanced practical understanding of client–server architecture, REST-based communication, and database-driven application workflows.
 
----
 
 ## Prerequisites
 - Node.js (v16 or newer recommended)
