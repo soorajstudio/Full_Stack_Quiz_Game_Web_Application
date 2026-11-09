@@ -1,104 +1,78 @@
-# 🎮 Full Stack Quiz Web Application
+# Full_Stack_Quiz_Game_Web_Application
 
-Developed a full stack web-based quiz application that allows users to participate in interactive quizzes featuring multiple-choice questions and typed answer responses. Implemented dynamic question rendering, answer validation logic, and score calculation mechanisms to support real-time quiz interaction. Designed a responsive user interface for smooth navigation between quiz sections and integrated backend functionality to manage quiz data and user responses. This project enhanced practical understanding of client–server architecture, REST-based communication, and database-driven application workflows.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/Node.js-Backend-green?style=flat-square&logo=node.js" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Socket.io-WebSockets-black?style=flat-square&logo=socketdotio" alt="Socket.io" />
+  <img src="https://img.shields.io/badge/Express-API-lightgrey?style=flat-square&logo=express" alt="Express" />
+  <img src="https://img.shields.io/badge/Vite-7-purple?style=flat-square&logo=vite" alt="Vite" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="License" />
+</p>
 
-
-## Prerequisites
-- Node.js (v16 or newer recommended)
-- npm (comes with Node.js)
-- [cloudflared](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/) installed globally
+A real-time, interactive full-stack multiplayer quiz game web application. Host live trivia rooms, join instantly via unique room codes, answer timed questions concurrently, track live leaderboards, and celebrate winners on the animated podium.
 
 ---
 
-## 1. Install Dependencies
+## 📸 Hero Preview
 
-### Backend
+<p align="center">
+  <img src="docs/screenshots/quiz-hero.png" width="100%" alt="Full Stack Quiz Game Arcade Gateway" />
+</p>
+
+## 🖼️ UI Snapshot Gallery
+
+<p align="center">
+  <img src="docs/screenshots/quiz-lobby.png" width="49%" alt="Host Game Lobby & Player Roster" />
+  <img src="docs/screenshots/quiz-gameplay.png" width="49%" alt="Live Question Countdown & Answers" />
+</p>
+
+---
+
+## ✨ Features
+
+- 🎮 **Real-Time Multiplayer Engine** - Seamless WebSocket synchrony via Socket.io for instant lobby joins, buzzer clicks, and round transitions.
+- ⏱️ **Dynamic Time & Speed Scoring** - Timed question countdowns where faster correct answers yield higher points.
+- 🏆 **Round Leaderboards & Winner Podium** - Continuous score updates between questions leading to a celebratory 1st, 2nd, and 3rd place podium.
+- 🕹️ **Arcade Neon UI** - Responsive dark cyberpunk design system optimized for mobile players and projector/large-screen hosts.
+- 👥 **Host vs Player Perspectives** - Dedicated host controller dashboard alongside streamlined mobile player buzzers.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Client**: React 19, Vite, Socket.io-Client, Modern CSS3
+- **Server**: Node.js, Express, Socket.io (WebSocket Event Engine)
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/soorajstudio/Full_Stack_Quiz_Game_Web_Application.git
+cd Full_Stack_Quiz_Game_Web_Application
 ```
+
+### 2. Start Backend Server
+```bash
 cd server
 npm install
+npm start
 ```
 
-### Frontend
-```
+### 3. Start Frontend Client
+```bash
 cd ../client
 npm install
-```
-
----
-
-## 2. Start the Backend
-
-The backend runs on port **3001** by default.
-```
-cd server
-node index.js
-```
-
----
-
-## 3. Start the Frontend (Vite Dev Server)
-
-The frontend runs on port **5173** by default.
-```
-cd client
 npm run dev
 ```
 
----
-
-## 4. Expose the Frontend with Cloudflare Tunnel
-
-In a new terminal, run:
-```
-cloudflared tunnel --url http://localhost:5173/ protocol --http2
-```
-- This will provide a public URL (e.g., `https://your-tunnel-id.trycloudflare.com`) that you can share for external access.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## 5. Configure Vite for Cloudflare Tunnel
+## 📄 License
 
-To allow access via the Cloudflare URL and ensure socket.io works:
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-1. **Edit `client/vite.config.js`**
-
-Add or update the `server` section as follows:
-
-```js
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    allowedHosts: [
-      'your-tunnel-id.trycloudflare.com' // Replace with your actual tunnel URL
-    ],
-    proxy: {
-      '/socket.io': {
-        target: 'http://localhost:3001', // Backend port
-        ws: true,
-        changeOrigin: true,
-      }
-    }
-  }
-})
-```
-
-- Replace `'your-tunnel-id.trycloudflare.com'` with the actual hostname from your cloudflared output.
-- Save the file and restart the Vite dev server (`npm run dev`).
-
----
-
-## 6. Accessing the App
-
-- Open the Cloudflare tunnel URL in your browser (on your phone or any device).
-- The frontend will proxy all `/socket.io` requests to your local backend, so multiplayer and real-time features will work externally.
-
----
-
-## Troubleshooting
-- If you see certificate errors, make sure you are not using a hardcoded backend URL in the frontend.
-- If you get 500 errors, ensure both frontend and backend are running, and the proxy target port matches your backend.
-- Always restart the Vite dev server after editing `vite.config.js`.
-
----
-
-Enjoy your GameQuiz app!
+Developed with ❤️ by [Sooraj Studio](https://github.com/soorajstudio).
